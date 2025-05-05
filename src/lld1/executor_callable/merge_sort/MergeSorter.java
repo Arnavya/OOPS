@@ -13,6 +13,10 @@ public class MergeSorter implements Callable<List<Integer>> {
         this.listToSort = list;
         this.es = es;
     }
+
+    public MergeSorter(int[] arr, int i, int i1) {
+    }
+
     @Override
     public List<Integer> call() throws Exception {
         if(listToSort.size()<=1){
