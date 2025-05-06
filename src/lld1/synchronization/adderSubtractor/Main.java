@@ -1,4 +1,4 @@
-package lld1.adderSubtractor;
+package lld1.synchronization.adderSubtractor;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -14,6 +14,8 @@ public class Main {
         t1.join();
         t2.join();
 
+        System.out.println(count);
         System.out.println(count.val);
+
     }
 }

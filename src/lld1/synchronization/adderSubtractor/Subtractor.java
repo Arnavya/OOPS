@@ -1,4 +1,4 @@
-package lld1.adderSubtractor;
+package lld1.synchronization.adderSubtractor;
 
 public class Subtractor implements Runnable{
     Count count;
