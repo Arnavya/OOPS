@@ -22,3 +22,7 @@ Having an object as the time doesn't guarantee compile time safety.We never want
 When we run this and try to typecast Long into string it will give us runtime type safety error.
 It's always better to get the error in compile time(compile time type safety error) than in runtime(runtime type safety error).
  */
+/*
+This is actually inplementation of Generics before Java 5 when Generics was not introduced
+which is now called RAW type-->it was using the Object type for all the other data types.
+ */

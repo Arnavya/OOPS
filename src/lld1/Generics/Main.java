@@ -42,5 +42,22 @@ public class Main {
         // Preventing errors in runtime.
         Integer first = pair1.getFirst();//Proper way to define.
         System.out.println(first);
+        List<Integer> l1 = List.of(1,2,3);
+        List list = List.of("HI","Hello");
+
+
+        //Raw Type
+        Pair1 pair4 = new Pair1(1l,"Hi");
+        pair4.getFirst();//It's returning Object type-> because it's using the raw type for it.
+        //Implementation of Genrics before java 5 was using the Object type for all the datatypes.
+
+        //Genric examples
+        Demo<Integer,String> demo = new Demo<>();
+        demo.doSomething(1,"Hi");
+
+        String s = Demo.<String,Integer>getValue("Hello",2);
+        System.out.println(s);
+
+        System.out.println(Demo.<Double,String>getValue(1.0,"Name"));
     }
 }
