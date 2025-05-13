@@ -19,11 +19,26 @@ public class Main {
         List<String> strings = new ArrayList<>();
         strings.addAll(List.of("Arnavya","Naresh","Abhishek"));
         Collections.sort(strings);
+
+        //Using the natural ordering defined in Student class(Desc order of PSP)
         Collections.sort(students);
+
+        //Custom ordering defined in ASC order of name.
+        Collections.sort(students,new StudentOrderingByName());
 /*
 If you want to sort items based on a different parameter
 or different order from the natural ordering --> COMPARATOR.
 
+default/natural ordering => Comparable --> method to implement(comparedTo())
+Custom ordeing => Comparable --> method to implement(Compare()).
+
+ */
+
+/*
+Difference b/w comparator and comparable:
+Comparable is used to define the natural ordering of elements.It has a method called comparedTo()
+which we need to implement.
+Comparator is used to define a custom ordering of the elements & we have to implement a compare method.
  */
     }
 }
