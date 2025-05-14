@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Count count = new Count();
 
-        //Lambda
+        //Lambda-> A way to create an object of a class that implements a functional interface.
         /*
         1. Creates an anonymous class -> adderLambdaAnonymous
         2. It will implement the interface Runnable in the Anonymous class it created
@@ -19,7 +19,6 @@ public class Main {
         5.And this Lambda will return an object of this anonymous class which will we stored in the
         runnable(adderLambda)
          */
-
         Runnable adderLambda = () -> {
             for(int i=1;i<=1000;i++){
                 synchronized(count){
