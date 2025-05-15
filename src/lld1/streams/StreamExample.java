@@ -76,4 +76,8 @@ It consumes the Stream and does an action with each and every element.(Eg. print
 
     }
 }
-
+/*
+UseCase of Streams:
+We use it mostly when there is a lot of data that we want to bring in the memory & we don't want
+to wast a lot of memory.
+ */
