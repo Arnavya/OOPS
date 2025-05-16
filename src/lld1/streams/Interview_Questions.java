@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.*;
 public class Interview_Questions {
     public static void main(String[] args) {
         /*
@@ -99,8 +101,38 @@ but you cannot reassign the local variable reference.
         System.out.println(max1);
         ///////////////////////////////////////////////
         //Q7) Given a String, find the first non-repeated character in it using Stream functions?
+        String input = "Java articles are Awesome";
+        Character result = input.chars() // Stream of String
+                .mapToObj(s -> Character.toLowerCase(Character.valueOf((char) s))) // First convert to Character object and then to lowercase
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) //Store the chars in map with count
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() == 1L)
+                .map(entry -> entry.getKey())
+                .findFirst()
+                .get();
+        System.out.println(result);
+        ////////////////////////////////////////////////////
 
+        //8) Given a String, find the first repeated character in it using Stream functions?
+        String input1 = "Java Articles are Awesome";
 
+        Character result1 = input1.chars() // Stream of String
+                .mapToObj(s -> Character.toLowerCase(Character.valueOf((char) s))) // First convert to Character object and then to lowercase
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) //Store the chars in map with count
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() > 1L)
+                .map(entry -> entry.getKey())
+                .findFirst()
+                .get();
+        System.out.println(result1);
+        ////////////////////////////////////////////////////////////
+        //9) Given a list of integers, sort all the values present in it using Stream functions?
+        List<Integer> list4 = Arrays.asList(10,15,8,49,25,98,98,32,15);
 
+        list4.stream()
+                .sorted()
+                .forEach(System.out::println);
     }
 }
