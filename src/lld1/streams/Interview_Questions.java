@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.*;
+import java.util.stream.Stream;
+
 public class Interview_Questions {
     public static void main(String[] args) {
         /*
@@ -134,5 +136,60 @@ but you cannot reassign the local variable reference.
         list4.stream()
                 .sorted()
                 .forEach(System.out::println);
+        ///////////////////////////////////////////////////////////////
+        // 10)Given a list of integers, sort all the values present in it in descending order using Stream functions?
+        List<Integer> list5 = Arrays.asList(10,15,8,49,25,98,98,32,15);
+
+        list5.stream()
+                .sorted(Collections.reverseOrder())
+                .forEach(System.out::println);
+        //////////////////////////////////////////////////////////////////
+        //11)Given an integer array nums, return true if any value appears at least twice in the array,
+        // and return false if every element is distinct.
+        int[] nums = {1,2,3,4,5};
+        List<Integer> list6 = Arrays.stream(nums)
+                .boxed()
+                .collect(Collectors.toList());
+        Set<Integer> set1 = new HashSet<>(list);
+        if(set1.size() == list6.size()) {
+            System.out.println(false);
+        }
+        System.out.println(true);
+        //////////////////////////////////////////////////////////////////
+        //12)How will you get the current date and time using Java 8 Date and Time API?
+        System.out.println("Current Local Date: " + java.time.LocalDate.now());
+        //Used LocalDate API to get the date
+        System.out.println("Current Local Time: " + java.time.LocalTime.now());
+        //Used LocalTime API to get the time
+        System.out.println("Current Local Date and Time: " + java.time.LocalDateTime.now());
+        //Used LocalDateTime API to get both date and time
+        //////////////////////////////////////////////////////////////////
+        //13) Write a Java 8 program to concatenate two Streams?
+        List<String> list7 = Arrays.asList("Java", "8");
+        List<String> list8 = Arrays.asList("explained", "through", "programs");
+
+        Stream<String> concatStream = Stream.concat(list7.stream(), list8.stream());
+
+        // Concatenated the list1 and list2 by converting them into Stream
+
+        concatStream.forEach(str -> System.out.print(str + " "));
+
+        // Printed the Concatenated Stream
+        //////////////////////////////////////////////////////////////////////////////
+        //14) Java 8 program to perform cube on list elements and filter numbers greater than 50.
+        List<Integer> integerList = Arrays.asList(4,5,6,7,1,2,3);
+        integerList.stream()
+                .map(i -> i*i*i)
+                .filter(i -> i>50)
+                .forEach(System.out::println);
+        /////////////////////////////////////////////////////////////////////////////
+        //15) Write a Java 8 program to sort an array and then convert the sorted array into Stream?
+        int arr[] = { 99, 55, 203, 99, 4, 91 };
+        Arrays.parallelSort(arr);
+        // Sorted the Array using parallelSort()
+
+        Arrays.stream(arr).forEach(n > System.out.print(n + " "));
+        /* Converted it into Stream and then
+           printed using forEach */
     }
 }
