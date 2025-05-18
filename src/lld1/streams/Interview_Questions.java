@@ -188,8 +188,42 @@ but you cannot reassign the local variable reference.
         Arrays.parallelSort(arr);
         // Sorted the Array using parallelSort()
 
-        Arrays.stream(arr).forEach(n > System.out.print(n + " "));
+        //Arrays.stream(arr).forEach(n > System.out.print(n + " "));
         /* Converted it into Stream and then
            printed using forEach */
+        /////////////////////////////////////////////////////////////////////////////
+        //16) How to use map to convert object into Uppercase in Java 8?
+        List<String> names = Arrays.asList("aa", "bb", "cc", "dd");
+        List<String> nameLst = names.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+        System.out.println(nameLst);
+        /////////////////////////////////////////////////////////////////////////////
+        //17)How to count each element/word from the String ArrayList in Java8?
+        List<String> names1 = Arrays.asList("AA", "BB", "AA", "CC");
+        Map<String,Long> namesCount = names1
+                .stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Function.identity(), Collectors.counting()));
+        System.out.println(namesCount);
+
+        //18)How to find only duplicate elements with its count from the String ArrayList in Java8?
+        List<String> names = Arrays.asList("AA", "BB", "AA", "CC");
+        Map<String,Long> namesCount = names
+                .stream()
+                .filter(x->Collections.frequency(names, x)>1)
+                .collect(Collectors.groupingBy
+                        (Function.identity(), Collectors.counting()));
+        System.out.println(namesCount);
+
+        /*or you can also try using  */
+
+        Map<String, Long> namesCount1 = names.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }
